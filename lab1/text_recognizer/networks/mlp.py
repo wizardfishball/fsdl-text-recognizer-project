@@ -18,7 +18,16 @@ def mlp(input_shape: Tuple[int, ...],
     model = Sequential()
     # Don't forget to pass input_shape to the first layer of the model
     ##### Your code below (Lab 1)
+    
+    # creating input layers
+    model.add(Flatten(input_shape=input_shape))
+    # adding fully-connected and dropout layers
+    for i in range(num_layers):        
+        model.add(Dense(layer_size, activation='relu'))
+        model.add(Dropout(dropout_amount))
 
+    model.add(Dense(num_classes, activation='softmax'))
+    
     ##### Your code above (Lab 1)
 
     return model
